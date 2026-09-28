@@ -3,28 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Up Down Up Down Select Start</title>
+    <meta name="description" content="Xander's class website for Universal Design: a little bit about me, my interests, and what I'm learning.">
+    <title>Home | Xander's Universal Design Site</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f3f5f9;
+            --text: #1b1f27;
+            --muted: #4a5263;
+            --accent: #1d4ed8;
+            --accent-text: #ffffff;
+            --border: #d5dae3;
+            --focus: #b45309;
+            --max-width: 44rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #12151c;
+                --surface: #1c212b;
+                --text: #eef1f6;
+                --muted: #b4bccb;
+                --accent: #93b4ff;
+                --accent-text: #0b1020;
+                --border: #343b49;
+                --focus: #fbbf24;
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.65;
+        }
+
+        a {
+            color: var(--accent);
+            text-underline-offset: 0.2em;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 3px;
+        }
+
+        /* Skip link: hidden until it receives keyboard focus */
+        .skip-link {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            z-index: 100;
+            padding: 0.6rem 1rem;
+            background: var(--accent);
+            color: var(--accent-text);
+            font-weight: 600;
+            border-radius: 0.375rem;
+            transform: translateY(-150%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .wrapper {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header and navigation */
+        .site-header {
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .site-header .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem 1.5rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .site-name {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .site-name a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            min-height: 2.75rem;
+            padding: 0.4rem 1rem;
+            border: 2px solid var(--text);
+            border-radius: 0.375rem;
+            background: transparent;
+            color: var(--text);
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .nav-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-list a {
+            display: block;
+            min-height: 2.75rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 0.375rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-list a[aria-current="page"] {
+            background: var(--accent);
+            color: var(--accent-text);
+            font-weight: 600;
+        }
+
+        /* Small screens: collapse the menu behind a button (only when JavaScript is running) */
+        @media (max-width: 40rem) {
+            .js .nav-toggle {
+                display: inline-block;
+            }
+
+            .js .site-nav {
+                flex-basis: 100%;
+            }
+
+            .js .nav-list {
+                flex-direction: column;
+            }
+
+            .js .nav-list[hidden] {
+                display: none;
+            }
+        }
+
+        /* Main content */
+        main {
+            padding-top: 2.5rem;
+            padding-bottom: 3rem;
+        }
+
+        h1,
+        h2 {
+            line-height: 1.25;
+        }
+
+        h1 {
+            margin: 0 0 0.5rem;
+            font-size: clamp(2rem, 6vw, 2.75rem);
+        }
+
+        h2 {
+            margin: 2.5rem 0 0.75rem;
+            font-size: 1.5rem;
+        }
+
+        .lead {
+            margin-top: 0;
+            color: var(--muted);
+            font-size: 1.25rem;
+        }
+
+        .facts {
+            margin: 0;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            background: var(--surface);
+        }
+
+        .facts li + li {
+            margin-top: 0.4rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .site-footer .wrapper {
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<nav class="navbar">
-    <ul>
-        <li><a href="test.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+    <header class="site-header">
+        <div class="wrapper">
+            <p class="site-name"><a href="index.html">Xander</a></p>
 
+            <nav class="site-nav" aria-label="Main">
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <main id="main-content" tabindex="-1">
+        <div class="wrapper">
+            <h1>Hi, I'm Xander</h1>
+            <p class="lead">Your friendly neighborhood classmate</p>
 
-<main>
-    <h1>My Website</h1>
-    <p>This is super rusty work</p>
+            <section aria-labelledby="about-heading">
+                <h2 id="about-heading">A little bit about me</h2>
+                <p>I think of myself as a master amateur, or "master of none," so to speak. I love trying new things and doing a bunch of different things at once.</p>
+                <p>When it comes to coding, I still know very little, but I do understand how things work. The same goes for grammar.</p>
+            </section>
 
-    <h2>A little bit about me</h2>
-    <p>My name is Xander, I view myself as a master amature. Master of none so to speak. I just like doing new, and like doing a bunch of different things. When it comes to coding, still know very little but I do understand things, same thing with grammar. I have a dog named Yogi, I like the color blue, and I just went to Asia over the summer. Fun fact I can say I am learning four different coding langauges in this current moment.</p>
-</main>    
+            <section aria-labelledby="facts-heading">
+                <h2 id="facts-heading">Quick facts</h2>
+                <ul class="facts">
+                    <li>I have a dog named Yogi.</li>
+                    <li>My favorite color is blue.</li>
+                    <li>I traveled to Asia this past summer.</li>
+                    <li>Fun fact: I'm currently learning four coding languages at the same time: C, SQL, HTML, and Altruyx.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <p>Created by Xander for Universal Design.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var toggle = document.querySelector(".nav-toggle");
+            var list = document.getElementById("nav-list");
+            var smallScreen = window.matchMedia("(max-width: 40rem)");
+
+            document.documentElement.classList.add("js");
+
+            function setOpen(open) {
+                toggle.setAttribute("aria-expanded", String(open));
+                list.hidden = !open && smallScreen.matches;
+            }
+
+            toggle.addEventListener("click", function () {
+                setOpen(toggle.getAttribute("aria-expanded") !== "true");
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true" && smallScreen.matches) {
+                    setOpen(false);
+                    toggle.focus();
+                }
+            });
+
+            smallScreen.addEventListener("change", function () {
+                setOpen(false);
+            });
+
+            setOpen(false);
+        })();
+    </script>
 </body>
 </html>
-
