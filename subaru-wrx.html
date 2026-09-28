@@ -93,6 +93,13 @@
             font-weight: bold;
         }
 
+        /* Site navigation sits below the page title */
+        header nav {
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+        }
+
         .site-nav ul {
             display: flex;
             flex-wrap: wrap;
@@ -116,7 +123,7 @@
 
         /* Headings */
         h1 {
-            margin: 1rem 0 0;
+            margin: 0.5rem 0 0;
             font-size: 2.5rem;
             line-height: 1.2;
         }
@@ -244,6 +251,8 @@
 
     <header>
         <p class="site-name">Xander</p>
+        <h1 id="top">Subaru WRX</h1>
+        <p class="tagline">The rally-bred, all-wheel-drive compact car from Japan</p>
         <nav class="site-nav" aria-labelledby="site-nav-heading">
             <h2 id="site-nav-heading" class="sr-only">Site navigation</h2>
             <ul>
@@ -256,9 +265,6 @@
     </header>
 
     <main id="main-content">
-        <h1 id="top">Subaru WRX</h1>
-        <p class="tagline">The rally-bred, all-wheel-drive compact car from Japan</p>
-
         <figure>
             <img src="images/wrx/wrx-2022-sport-tech.webp" width="616" height="356" alt="Bright blue 2022 Subaru WRX sedan with black wheels, seen from the front left.">
             <figcaption>2022 Subaru WRX Sport-Tech in World Rally Blue Pearl.</figcaption>

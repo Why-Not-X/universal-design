@@ -56,6 +56,19 @@
             outline-offset: 3px;
         }
 
+        /* Hide only visually, but have it available for screen readers */
+        .sr-only {
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
         /* Skip link: hidden off screen until someone presses Tab */
         .skip-link {
             position: absolute;
@@ -78,6 +91,13 @@
         .site-name {
             margin: 0 0 0.5rem;
             font-weight: bold;
+        }
+
+        /* Site navigation sits below the page title */
+        header nav {
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
         }
 
         nav ul {
@@ -108,7 +128,7 @@
         }
 
         h1 {
-            margin: 0;
+            margin: 0.5rem 0 0;
             font-size: 2.5rem;
             line-height: 1.2;
         }
@@ -156,7 +176,10 @@
 
     <header>
         <p class="site-name">Xander</p>
-        <nav aria-label="Main">
+        <h1>Xander's Universal Design Home Page</h1>
+        <p class="tagline">Hi, I'm Xander, your friendly neighborhood classmate.</p>
+        <nav aria-labelledby="site-nav-heading">
+            <h2 id="site-nav-heading" class="sr-only">Site navigation</h2>
             <ul>
                 <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="subaru-wrx.html">Wiki Project</a></li>
@@ -167,9 +190,6 @@
     </header>
 
     <main id="main-content">
-        <h1>Hi, I'm Xander</h1>
-        <p class="tagline">Your friendly neighborhood classmate</p>
-
         <section aria-labelledby="about-heading">
             <h2 id="about-heading">A little bit about me</h2>
             <p>I think of myself as a master amateur, or "master of none," so to speak. I love trying new things and doing a bunch of different things at once.</p>
