@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Subaru WRX: its history from the Impreza to today, its World Rally Championship cars, and its racing. Recoded from the Wikipedia article with HTML5 semantic structure.">
+    <title>Subaru WRX | Xander's Universal Design Site</title>
+    <style>
+        /* Colors */
+        :root {
+            --background: #ffffff;
+            --box: #f3f5f9;
+            --text: #1b1f27;
+            --gray-text: #4a5263;
+            --blue: #1d4ed8;
+            --border: #d5dae3;
+            --focus: #b45309;
+        }
+
+        /* Dark mode colors, used when the device is set to dark mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #12151c;
+                --box: #1c212b;
+                --text: #eef1f6;
+                --gray-text: #b4bccb;
+                --blue: #93b4ff;
+                --border: #343b49;
+                --focus: #fbbf24;
+            }
+        }
+
+        body {
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+
+        /* Keeps the header, main, and footer content in a centered column */
+        header,
+        main,
+        footer {
+            padding: 1rem max(1rem, calc((100% - 44rem) / 2));
+        }
+
+        a {
+            color: var(--blue);
+        }
+
+        /* Clear outline when using the keyboard to move around */
+        a:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 3px;
+        }
+
+        /* Hide only visually, but have it available for screen readers */
+        .sr-only {
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
+        /* Skip link: hidden off screen until someone presses Tab */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .skip-link:focus {
+            left: 1rem;
+            top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--background);
+        }
+
+        /* Header and site navigation */
+        body > header {
+            background: var(--box);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .site-name {
+            margin: 0 0 0.5rem;
+            font-weight: bold;
+        }
+
+        .site-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .site-nav a {
+            display: inline-block;
+            padding: 0.5rem 0;
+        }
+
+        /* The link for the page you are on */
+        .site-nav a[aria-current="page"] {
+            color: var(--text);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Headings */
+        h1 {
+            margin: 1rem 0 0;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--border);
+            font-size: 1.75rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            margin-top: 2rem;
+            font-size: 1.35rem;
+            line-height: 1.3;
+        }
+
+        .tagline {
+            margin-top: 0.5rem;
+            color: var(--gray-text);
+            font-size: 1.25rem;
+        }
+
+        /* Table of contents */
+        .contents {
+            margin: 2rem 0;
+            padding: 0.5rem 1.5rem 1rem;
+            background: var(--box);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+        }
+
+        .contents h2 {
+            margin-top: 0.5rem;
+            padding-top: 0;
+            border-top: none;
+            font-size: 1.35rem;
+        }
+
+        .contents ol ol {
+            margin: 0.25rem 0 0.5rem;
+        }
+
+        /* Photos */
+        figure {
+            margin: 1.5rem 0;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.375rem;
+        }
+
+        figcaption {
+            margin-top: 0.5rem;
+            color: var(--gray-text);
+            font-size: 1rem;
+        }
+
+
+        /* Specification table */
+        table {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-collapse: collapse;
+            font-size: 1rem;
+        }
+
+        caption {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        thead th {
+            background: var(--box);
+        }
+
+        .back-to-top {
+            font-size: 1rem;
+        }
+
+        /* Image credits list */
+        .credits {
+            font-size: 1rem;
+        }
+
+        .credits li + li {
+            margin-top: 0.4rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            color: var(--gray-text);
+            font-size: 1rem;
+        }
+
+        /* Phones and small screens */
+        @media (max-width: 30rem) {
+            .site-nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+        <p class="site-name">Xander</p>
+        <nav class="site-nav" aria-labelledby="site-nav-heading">
+            <h2 id="site-nav-heading" class="sr-only">Site navigation</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="subaru-wrx.html" aria-current="page">Subaru WRX</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <h1 id="top">Subaru WRX</h1>
+        <p class="tagline">The rally-bred, all-wheel-drive compact car from Japan</p>
+
+        <figure>
+            <img src="images/wrx/wrx-2022-sport-tech.webp" width="616" height="356" alt="Bright blue 2022 Subaru WRX sedan with black wheels, seen from the front left.">
+            <figcaption>2022 Subaru WRX Sport-Tech in World Rally Blue Pearl.</figcaption>
+        </figure>
+
+        <p>The Subaru WRX is an all-wheel-drive compact car made by the Japanese automaker Subaru. It began in 1992 as a version of the Subaru Impreza built for the World Rally Championship, and Subaru has said the name stands for "World Rally eXperimental."</p>
+        <p>Starting with the 2015 models, the WRX became its own model, separate from the Impreza, and was sold only as a sedan. The car is famous for its bright blue paint and gold wheels, a look that came from the Subaru rally team's sponsorship by a cigarette brand.</p>
+
+        <nav class="contents" aria-labelledby="contents-heading">
+            <h2 id="contents-heading">Contents</h2>
+            <ol>
+                <li><a href="#sti">STI</a></li>
+                <li>
+                    <a href="#impreza-based">Impreza-based models (1992–2014)</a>
+                    <ol>
+                        <li><a href="#impreza-first">First generation (GC and GF)</a></li>
+                        <li><a href="#impreza-second">Second generation (GD and GG)</a></li>
+                        <li><a href="#impreza-third">Third generation (GE, GH, GR, and GV)</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#wrc">World Rally Championship</a>
+                    <ol>
+                        <li><a href="#wrc-group-a">Group A Impreza (1993–1996)</a></li>
+                        <li><a href="#wrc-gc">World Rally Car Impreza GC (1997–2001)</a></li>
+                        <li><a href="#wrc-gd">World Rally Car Impreza GD (2001–2008)</a></li>
+                        <li><a href="#wrc-gr">World Rally Car Impreza GR (2008)</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#first-gen">First generation WRX (VA, 2015)</a>
+                    <ol>
+                        <li><a href="#powertrain">Powertrain</a></li>
+                        <li><a href="#updates">Facelift and updates</a></li>
+                        <li><a href="#special-editions">Special editions</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#second-gen">Second generation WRX (VB, 2021)</a>
+                    <ol>
+                        <li><a href="#north-america">North America</a></li>
+                        <li><a href="#viziv">Viziv concepts</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#motorsport">Motorsport</a>
+                    <ol>
+                        <li><a href="#rallying">Rallying</a></li>
+                        <li><a href="#endurance">Endurance racing</a></li>
+                        <li><a href="#project-midnight">Project Midnight</a></li>
+                    </ol>
+                </li>
+                <li><a href="#image-credits">Image credits</a></li>
+            </ol>
+        </nav>
+
+        <section id="sti" aria-labelledby="sti-heading">
+            <h2 id="sti-heading">STI</h2>
+            <figure>
+                <img src="images/wrx/wrx-sti-2018-facelift.webp" width="404" height="202" alt="Blue WRX STI sedan with a rear wing and dark wheels, parked on paving stones." loading="lazy">
+                <figcaption>A facelifted WRX STI, the top performance model developed by Subaru Tecnica International.</figcaption>
+            </figure>
+            <p>In 1988, Subaru created Subaru Tecnica International (STI) as its motorsport division, to build cars for the World Rally Championship and other racing. After the first Impreza arrived in November 1992 and its rally car debuted the next year, Subaru began selling an STI version to the public in January 1994. This road car was needed so the rally car could meet the competition's homologation rules, which require race cars to be based on cars people can actually buy.</p>
+            <p>STI versions were first sold only in Japan and later in other markets. Because the STI was usually the highest-performance Impreza, it became popular with enthusiasts, tuners, and amateur racers, especially in rallying and track driving.</p>
+            <p>STI models fall into two main groups:</p>
+            <ul>
+                <li>Fully developed cars built to qualify a model for motorsport, then sold as street-legal road cars.</li>
+                <li>Cars fitted at the factory with parts from the STI catalog and sold as "Tuned by STI" models.</li>
+            </ul>
+            <p>Subaru has also sold many limited editions of the WRX STI, many of them only in Japan.</p>
+            <p class="back-to-top"><a href="#top">Back to top</a></p>
+        </section>
+
+        <section id="impreza-based" aria-labelledby="impreza-based-heading">
+            <h2 id="impreza-based-heading">Impreza-based models (1992–2014)</h2>
+            <p>The first three generations of the WRX were built on the regular Impreza platform. They replaced the older Subaru RX hatchback and sedan.</p>
+
+            <section id="impreza-first">
+                <h3>First generation (GC and GF)</h3>
+                <p>The first WRX models were based on the Impreza sedan, with the chassis code GC. A wagon version (GF) followed in 1993, and the first upgraded WRX STi arrived in 1994. In the late 1990s and early 2000s, Subaru also offered several limited-edition coupes. They were never sold in the United States and are highly sought after by Subaru fans today.</p>
+                <figure>
+                    <img src="images/wrx/impreza-gc-1999-sedan.webp" width="404" height="226" alt="Silver first-generation Impreza sedan with a hood scoop, parked on a village street." loading="lazy">
+                    <figcaption>A first-generation (GC) turbocharged Impreza sedan.</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/impreza-wrx-sti-coupe-1999.webp" width="400" height="238" alt="Blue two-door Impreza coupe with a tall rear wing, gold wheels, and WRX decals, seen from the rear." loading="lazy">
+                    <figcaption>1999 Impreza WRX STI Version 5 coupe.</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/impreza-gf-wagon-2000.webp" width="406" height="224" alt="Dark blue Impreza wagon with a roof spoiler and twin exhaust, seen from the rear in a parking lot." loading="lazy">
+                    <figcaption>A first-generation (GF) turbocharged Impreza wagon.</figcaption>
+                </figure>
+            </section>
+
+            <section id="impreza-second">
+                <h3>Second generation (GD and GG)</h3>
+                <p>The second-generation WRX came as a sedan (GD) and a wagon (GG). It was the first WRX sold in the United States, arriving for the 2002 model year, and the STI followed in 2004.</p>
+                <p>This generation is known by nicknames for its three different front ends:</p>
+                <ul>
+                    <li>"Bugeye," with round headlights, from 2000.</li>
+                    <li>"Blobeye," from 2004.</li>
+                    <li>"Hawkeye," with sharper headlights, from 2006.</li>
+                </ul>
+                <p>Through a deal between Subaru's parent company, Fuji Heavy Industries, and General Motors, Saab also sold its own version of the WRX wagon, the Saab 9-2X, for 2005 and 2006.</p>
+                <figure>
+                    <img src="images/wrx/impreza-wrx-2001-wagon.webp" width="400" height="232" alt="Silver Impreza wagon seen from the rear, parked in front of a brick wall." loading="lazy">
+                    <figcaption>2001 Impreza WRX wagon (GG) from the "bugeye" era.</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/impreza-wrx-2003-sedan.webp" width="406" height="188" alt="Red Impreza WRX sedan with a hood scoop and small rear spoiler, parked in a lot with other cars." loading="lazy">
+                    <figcaption>2003 Impreza WRX Turbo sedan (GD).</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/impreza-wrx-sti-2006-sedan.webp" width="404" height="226" alt="Blue Impreza WRX STI sedan with a large hood scoop, a rear wing, and gold wheels." loading="lazy">
+                    <figcaption>2006 Impreza WRX STI (GD) with the "hawkeye" front end.</figcaption>
+                </figure>
+            </section>
+
+            <section id="impreza-third">
+                <h3>Third generation (GE, GH, GR, and GV)</h3>
+                <p>The third-generation WRX was first sold as a sedan (GE) and a hatchback (GH), which replaced the wagon. The WRX STI came only as a wider-bodied hatchback (GR).</p>
+                <p>For the 2011 model year, the regular WRX sedan and hatchback moved to the wide STI body, and a wide-body STI sedan (GV) was added. The Impreza itself was redesigned for 2012, but the WRX stayed on this platform until 2014 in most markets.</p>
+                <figure>
+                    <img src="images/wrx/impreza-wrx-sti-hatchback-gr.webp" width="392" height="188" alt="White Impreza WRX STI hatchback with a hood scoop and wide fenders, parked on a street." loading="lazy">
+                    <figcaption>Third-generation WRX STI hatchback (GR).</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/impreza-wrx-2010-sedan.webp" width="398" height="206" alt="Dark gray WRX sedan with a hood scoop, parked outdoors among other cars." loading="lazy">
+                    <figcaption>2011 model year WRX sedan (GV) with the wider body.</figcaption>
+                </figure>
+            </section>
+            <p class="back-to-top"><a href="#top">Back to top</a></p>
+        </section>
+
+        <section id="wrc" aria-labelledby="wrc-heading">
+            <h2 id="wrc-heading">World Rally Championship</h2>
+            <p>The Subaru Impreza WRC was the World Rally Championship car based on the WRX. It was run by Subaru's factory team, the Subaru World Rally Team, and replaced the Subaru Legacy in 1993. From its debut at the 1993 Rally Finland, the car won six world titles: three manufacturers' titles in a row and three drivers' titles.</p>
+
+            <section id="wrc-group-a">
+                <h3>Group A Impreza (1993–1996)</h3>
+                <figure>
+                    <img src="images/wrx/impreza-555-mcrae.webp" width="498" height="270" alt="Blue Impreza rally car with yellow stripes, gold wheels, sponsor decals, and the number 4, on display indoors." loading="lazy">
+                    <figcaption>Colin McRae's 1995 Group A Impreza 555.</figcaption>
+                </figure>
+                <p>Subaru's partner Prodrive decided that a smaller, nimbler car would make a better rally car than the Legacy. The Group A Impreza was 160 mm shorter, had a 60 mm shorter wheelbase, and was more evenly balanced from front to back. It was also the first rally car with active differentials. On its debut at the 1993 1000 Lakes Rally in Finland, Ari Vatanen drove it to second place.</p>
+                <p>In 1994 the team switched from Michelin to Pirelli tires. For 1995, rule makers required smaller air intakes to slow the cars down, and Subaru answered with a reworked engine.</p>
+            </section>
+
+            <section id="wrc-gc">
+                <h3>World Rally Car Impreza GC (1997–2001)</h3>
+                <figure>
+                    <img src="images/wrx/impreza-wrc97-goodwood.webp" width="500" height="338" alt="Blue two-door Impreza rally car with the number 6 racing past hay bales, the background blurred by its speed." loading="lazy">
+                    <figcaption>The WRC97, the first Prodrive World Rally Car, at the Goodwood Festival of Speed.</figcaption>
+                </figure>
+                <p>In 1997, the World Rally Car rules replaced Group A and gave teams much more freedom. Subaru built a completely redesigned two-door car, the WRC97. It was 1,770 mm wide and made 300 hp and 470 N⋅m of torque.</p>
+                <p>Each year brought a new version:</p>
+                <ul>
+                    <li><strong>WRC98:</strong> added computer-controlled active differentials and an electronic throttle, but mechanical failures kept the team out of the title fight.</li>
+                    <li><strong>WRC99:</strong> introduced a semi-automatic gearbox shifted with paddles on the steering wheel, like a Formula One car. Subaru was the first rally team to use this technology, which every World Rally Car used until it was banned in 2011.</li>
+                    <li><strong>WRC2000:</strong> looked almost the same, but more than 80% of its mechanical and electronic parts were redesigned. It won on its debut at Rally Portugal.</li>
+                </ul>
+            </section>
+
+            <section id="wrc-gd">
+                <h3>World Rally Car Impreza GD (2001–2008)</h3>
+                <p>The WRC2001 was based on the new GD Impreza and had four doors instead of two, with better aerodynamics, weight balance, and a lower center of gravity. Later versions kept improving it:</p>
+                <ul>
+                    <li><strong>WRC2003:</strong> switched to the "blobeye" look of the road car and had a lighter, stiffer body.</li>
+                    <li><strong>WRC2005:</strong> was 30 mm wider and used more lightweight composite panels.</li>
+                    <li><strong>WRC2006:</strong> took on the "hawkeye" look. New rules banned active differentials and water injection.</li>
+                    <li><strong>WRC2007:</strong> had new suspension and cooling, but struggled against its rivals with handling problems.</li>
+                </ul>
+                <p>The WRC2007 gearbox alone took 85 hours to build and cost over £75,000. Its semi-automatic system could change gears in less than 0.1 seconds, and the engine and gearbox could be swapped out in 10 to 12 minutes.</p>
+                <figure>
+                    <img src="images/wrx/impreza-wrc-cyprus-2006.webp" width="658" height="878" alt="Blue and green Impreza rally car sliding down a gravel road between trees, throwing up a huge cloud of dust." loading="lazy">
+                    <figcaption>Petter Solberg on gravel at the 2006 Cyprus Rally.</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/impreza-wrc2007-mexico.webp" width="500" height="374" alt="Blue and green Impreza rally car kicking up a cloud of dust on a dirt road while spectators watch." loading="lazy">
+                    <figcaption>Chris Atkinson's WRC2007 at the 2008 Rally México.</figcaption>
+                </figure>
+            </section>
+
+            <section id="wrc-gr">
+                <h3>World Rally Car Impreza GR (2008)</h3>
+                <figure>
+                    <img src="images/wrx/impreza-wrc2008-japan.webp" width="498" height="336" alt="Blue Subaru hatchback rally car with SUBARU in large letters on the door, driving past autumn trees." loading="lazy">
+                    <figcaption>Chris Atkinson's WRC2008 at the 2008 Rally Japan.</figcaption>
+                </figure>
+                <p>Subaru began testing the WRC2008, based on the new GR hatchback, in December 2007. It debuted at the Acropolis Rally in Greece in May 2008, where Petter Solberg finished second. Chris Atkinson's third place at Rally Finland was the car's last podium. Subaru withdrew from the World Rally Championship at the end of 2008 because of the global financial crisis.</p>
+            </section>
+            <p class="back-to-top"><a href="#top">Back to top</a></p>
+        </section>
+
+        <section id="first-gen" aria-labelledby="first-gen-heading">
+            <h2 id="first-gen-heading">First generation WRX (VA, 2015)</h2>
+            <p>For the 2015 model year, Subaru stopped selling the WRX under the Impreza name. In Japan it was called the WRX S4. It was still based on a modified Impreza body, but the whole front end and the rear fenders were unique to the WRX, and it had more power, firmer suspension, bigger brakes, and a lower ride height.</p>
+            <p>This generation was only sold as a sedan. That was a notable change, because the hatchback had made up about half of US WRX and WRX STI sales.</p>
+            <figure>
+                <img src="images/wrx/wrx-sti-2015-front.webp" width="620" height="280" alt="Black WRX STI sedan with a hood scoop and dark wheels, parked on a city street." loading="lazy">
+                <figcaption>Pre-facelift WRX STI (global model).</figcaption>
+            </figure>
+            <figure>
+                <img src="images/wrx/wrx-sti-2015-rear.webp" width="404" height="188" alt="The same black WRX STI seen from the rear, showing its tall wing and four exhaust tips." loading="lazy">
+                <figcaption>The rear of the same car, with the traditional high wing.</figcaption>
+            </figure>
+
+            <section id="powertrain">
+                <h3>Powertrain</h3>
+                <figure>
+                    <img src="images/wrx/wrx-sti-2015-engine.webp" width="306" height="250" alt="Blue WRX STI at an auto show with its hood open, showing the engine and the silver intercooler on top." loading="lazy">
+                    <figcaption>The engine bay of a 2015 WRX STI at the Montreal International Auto Show.</figcaption>
+                </figure>
+                <p>This was the first WRX without an EJ-series engine. The regular WRX used a new 2.0-liter FA20F engine with direct injection and a twin-scroll turbocharger, mounted low at the front of the engine to lower the car's center of gravity. It reaches peak torque at just 2,000 rpm, about half the engine speed of the older 2.5-liter engine. A 6-speed manual was standard, and a CVT automatic with paddle shifters was optional.</p>
+                <p>The WRX STI kept the older EJ engine: a 2.0-liter EJ207 in Japan and a 2.5-liter EJ257 elsewhere. It also kept its 6-speed manual gearbox and hydraulic power steering, with a quicker steering ratio.</p>
+                <table>
+                    <caption>Engine output of the first-generation WRX and WRX STI</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col">Engine</th>
+                            <th scope="col">Power</th>
+                            <th scope="col">Torque</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">WRX (international)</th>
+                            <td>2.0 L FA20F</td>
+                            <td>268 hp (200 kW)</td>
+                            <td>258 lb⋅ft (350 N⋅m)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">WRX STI (international)</th>
+                            <td>2.5 L EJ257</td>
+                            <td>305 hp (227 kW)</td>
+                            <td>290 lb⋅ft (393 N⋅m)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">WRX STI (Japan)</th>
+                            <td>2.0 L EJ207</td>
+                            <td>300 hp (224 kW)</td>
+                            <td>311 lb⋅ft (422 N⋅m)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="updates">
+                <h3>Facelift and updates</h3>
+                <p>In January 2017, Subaru announced updates for North America that answered some complaints about the 2015 car: revised suspension, better interior materials, a quieter cabin, and new front styling. A new Performance Package added Recaro seats, better brake pads, and no sunroof to save weight.</p>
+                <p>The 2018 and 2019 models added a larger driver display, the Subaru STARLINK infotainment system with Apple CarPlay and Android Auto, and an optional Harman Kardon stereo. Subaru's EyeSight driver-assist system became standard on all CVT models from 2020. European sales of the WRX STI ended in 2018.</p>
+            </section>
+
+            <section id="special-editions">
+                <h3>Special editions</h3>
+                <p>Subaru made many limited editions of the VA WRX and WRX STI, often for only one country. Two of the best known were sold only in Japan.</p>
+                <p><strong>WRX STI S208 (2017):</strong> limited to 450 cars. Its 2.0-liter EJ20 engine was tuned to 329 hp (245 kW). It also had quicker steering, Bilstein suspension, Recaro seats, 19-inch BBS wheels, and Brembo brakes. Up to 350 cars could get the NBR Challenge Package, which added a carbon fiber wing, front lip, and roof. The Cool Grey Khaki color was only available with that package.</p>
+                <figure>
+                    <img src="images/wrx/wrx-sti-s208-grey.webp" width="498" height="378" alt="Light gray WRX STI S208 at an auto show, with a red-trimmed grille and a black front lip spoiler." loading="lazy">
+                    <figcaption>WRX STI S208 NBR Challenge Package in Cool Grey Khaki.</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/wrx-sti-s208-blue.webp" width="298" height="220" alt="Blue WRX STI S208 at an auto show, with black wheels and a red-trimmed front lip spoiler." loading="lazy">
+                    <figcaption>WRX STI S208 NBR Challenge Package in WR Blue Pearl.</figcaption>
+                </figure>
+                <p><strong>WRX STI EJ20 Final Edition (2019):</strong> built to mark the end of the EJ20 engine, with only 555 made. Its engine parts were balanced far more precisely than usual, close to the standard of a racing engine.</p>
+                <figure>
+                    <img src="images/wrx/wrx-sti-ej20-final-edition.webp" width="500" height="378" alt="Blue WRX STI EJ20 Final Edition with gold wheels, on display at an auto show." loading="lazy">
+                    <figcaption>WRX STI EJ20 Final Edition.</figcaption>
+                </figure>
+            </section>
+            <p class="back-to-top"><a href="#top">Back to top</a></p>
+        </section>
+
+        <section id="second-gen" aria-labelledby="second-gen-heading">
+            <h2 id="second-gen-heading">Second generation WRX (VB, 2021)</h2>
+            <p>The current WRX was redesigned for the 2022 model year and moved to the Subaru Global Platform. It was revealed on 10 September 2021, after the New York auto show where it was supposed to debut was canceled.</p>
+            <p>In March 2022, Subaru announced it would not make a gas-powered STI version of this generation, because emissions rules were changing too quickly. A future WRX STI is likely to be a hybrid or electric car.</p>
+
+            <section id="north-america">
+                <h3>North America</h3>
+                <p>The new WRX uses a 2.4-liter turbocharged FA24F boxer engine that makes 271 hp (202 kW) and 258 lb⋅ft (350 N⋅m) of torque. Buyers can choose a 6-speed manual or a new CVT called the Subaru Performance Transmission. Cars with the Drive Mode Select system get electronically adjustable dampers, a first for the WRX.</p>
+                <p>It went on sale in February 2022. Later model years brought standard EyeSight and wireless phone connectivity (2024), the "Tuned by STI" tS model (2025), and a limited Series.Yellow edition of 350 cars (2026).</p>
+                <figure>
+                    <img src="images/wrx/wrx-2022-eyesight-orange.webp" width="618" height="346" alt="Orange 2022 WRX sedan on display at an auto show, with black wheels and a hood scoop." loading="lazy">
+                    <figcaption>A 2022 WRX 2.4 EyeSight on display in Thailand.</figcaption>
+                </figure>
+            </section>
+
+            <section id="viziv">
+                <h3>Viziv concepts</h3>
+                <p>The Viziv Performance Concept, shown at the Tokyo Motor Show in October 2017, hinted at the look of the second-generation WRX. It had a longer wheelbase than the VA WRX with shorter overhangs, and was 1,950 mm wide.</p>
+                <p>An updated Viziv Performance STI Concept followed at the Tokyo Auto Salon in January 2018. Around the same time, Subaru's UK marketing director said the new platform was designed for hybrid and electric power, fueling talk that the next STI could be a hybrid.</p>
+                <figure>
+                    <img src="images/wrx/viziv-performance-concept.webp" width="400" height="208" alt="Silver concept car with sharp, angular bodywork on a show stand." loading="lazy">
+                    <figcaption>Viziv Performance Concept (2017).</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wrx/viziv-performance-sti-concept.webp" width="404" height="302" alt="Silver concept car with red accents, a black hood scoop, and a rear wing, at an auto show." loading="lazy">
+                    <figcaption>Viziv Performance STI Concept (2018).</figcaption>
+                </figure>
+            </section>
+            <p class="back-to-top"><a href="#top">Back to top</a></p>
+        </section>
+
+        <section id="motorsport" aria-labelledby="motorsport-heading">
+            <h2 id="motorsport-heading">Motorsport</h2>
+
+            <section id="rallying">
+                <h3>Rallying</h3>
+                <p>After the Legacy's last rally in New Zealand in 1993, Subaru took the new Impreza to Rally Finland. It led at one point and finished second, showing that the smaller car had an edge over the Legacy. Subaru no longer competes in the World Rally Championship, but it still races WRX STI-based cars in rallies in the United States.</p>
+                <p>In 2016, former British rally champion Mark Higgins lapped the Isle of Man TT course in a VA WRX STI in 17 minutes, 35.139 seconds.</p>
+                <figure>
+                    <img src="images/wrx/impreza-wrx-sti-goodwood-2010.webp" width="494" height="356" alt="Green, black, and white Impreza hatchback rally car sliding through a dusty forest track." loading="lazy">
+                    <figcaption>An Impreza WRX STI (GR) competing at the 2010 Goodwood Festival of Speed.</figcaption>
+                </figure>
+            </section>
+
+            <section id="endurance">
+                <h3>Endurance racing</h3>
+                <p>Subaru Tecnica International has raced the WRX STI in the Nürburgring 24 Hours in Germany since 2008. It has won the SP3T class six times: in 2011, 2012, 2015, 2016, 2018, and 2019.</p>
+                <figure>
+                    <img src="images/wrx/wrx-sti-nbr-2016.webp" width="498" height="358" alt="Blue WRX STI race car covered in sponsor decals, with a large front splitter, on display indoors." loading="lazy">
+                    <figcaption>The WRX STI that won the SP3T class at the 2016 Nürburgring 24 Hours.</figcaption>
+                </figure>
+            </section>
+
+            <section id="project-midnight">
+                <h3>Project Midnight</h3>
+                <p>In 2024, Subaru Motorsports USA and Vermont SportsCar revealed "Project Midnight," a WRX prototype built for pure speed on pavement. It has a carbon fiber body, weighs 2,469 pounds (1,120 kg), and uses a 2.0-liter flat-four engine making 670 hp (500 kW).</p>
+                <p>Driven by Scott Speed, it finished second in the Goodwood Festival of Speed hill climb shootout in both 2024 and 2025. In August 2026, it set a new record at the Mount Washington Hillclimb with a time of 5:11.89.</p>
+                <figure>
+                    <img src="images/wrx/wrx-project-midnight.webp" width="504" height="382" alt="Dark gray wide-body WRX race car with large aerodynamic wings and splitters, being examined by two people in a tent." loading="lazy">
+                    <figcaption>Project Midnight in the paddock at the Goodwood Festival of Speed.</figcaption>
+                </figure>
+            </section>
+            <p class="back-to-top"><a href="#top">Back to top</a></p>
+        </section>
+
+        <section id="image-credits" aria-labelledby="image-credits-heading">
+            <h2 id="image-credits-heading">Image credits</h2>
+            <p>All photos come from Wikimedia Commons and are listed in the order they appear on this page.</p>
+            <ol class="credits">
+                <li>2022 WRX Sport-Tech: Elise240SX, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>Facelifted WRX STI: Alexander Migl, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>First-generation Impreza sedan: Guillaume Vachey, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></li>
+                <li>1999 WRX STI Version 5 coupe: Jeremy from Sydney, Australia, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></li>
+                <li>First-generation Impreza wagon: Makizox, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>2001 Impreza WRX wagon: OSX, public domain</li>
+                <li>2003 Impreza WRX Turbo: Vauxford, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>2006 Impreza WRX STI: Jeremy from Sydney, Australia, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></li>
+                <li>Third-generation WRX STI hatchback: TTTNIS, public domain</li>
+                <li>2011 WRX sedan: OSX, public domain</li>
+                <li>Colin McRae's Impreza 555: Liz Jones, modified by tma, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></li>
+                <li>Impreza WRC97: Neil, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></li>
+                <li>Petter Solberg, 2006 Cyprus Rally: Leonid Mamchenkov, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></li>
+                <li>Chris Atkinson, 2008 Rally México: Oadiazb, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></li>
+                <li>Chris Atkinson, 2008 Rally Japan: Kirche, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>2015 WRX STI, front and rear: Vauxford, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>2015 WRX STI engine bay: Bull-Doser, public domain</li>
+                <li>WRX STI S208 (both photos): Tokumeigakarinoaoshima, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>WRX STI EJ20 Final Edition: Tokumeigakarinoaoshima, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>2022 WRX 2.4 EyeSight: Chanokchon, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>Viziv Performance Concept: TTTNIS, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></li>
+                <li>Viziv Performance STI Concept: Tokumeigakarinoaoshima, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>Impreza WRX STI at Goodwood 2010: Brian Snelson, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></li>
+                <li>2016 Nürburgring 24 Hours class winner: Tokumeigakarinoaoshima, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+                <li>Project Midnight: Calreyn88, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+            </ol>
+            <p class="back-to-top"><a href="#top">Back to top</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Text adapted from the Wikipedia article "<a href="https://en.wikipedia.org/wiki/Subaru_WRX">Subaru WRX</a>," available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 License</a>.</p>
+        <p>Created by Xander for Universal Design.</p>
+    </footer>
+</body>
+</html>
