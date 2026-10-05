@@ -5,255 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Subaru WRX: its history from the Impreza to today, its World Rally Championship cars, and its racing. Recoded from the Wikipedia article with HTML5 semantic structure.">
     <title>Subaru WRX | Xander's Universal Design Site</title>
-    <style>
-        /* Colors */
-        :root {
-            --background: #ffffff;
-            --box: #f3f5f9;
-            --text: #1b1f27;
-            --gray-text: #4a5263;
-            --blue: #1d4ed8;
-            --border: #d5dae3;
-            --focus: #b45309;
-        }
-
-        /* Dark mode colors, used when the device is set to dark mode */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background: #12151c;
-                --box: #1c212b;
-                --text: #eef1f6;
-                --gray-text: #b4bccb;
-                --blue: #93b4ff;
-                --border: #343b49;
-                --focus: #fbbf24;
-            }
-        }
-
-        body {
-            margin: 0;
-            background: var(--background);
-            color: var(--text);
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-
-        /* Keeps the header, main, and footer content in a centered column */
-        header,
-        main,
-        footer {
-            padding: 1rem max(1rem, calc((100% - 44rem) / 2));
-        }
-
-        a {
-            color: var(--blue);
-        }
-
-        /* Clear outline when using the keyboard to move around */
-        a:focus {
-            outline: 3px solid var(--focus);
-            outline-offset: 3px;
-        }
-
-        /* Hide only visually, but have it available for screen readers */
-        .sr-only {
-            border: 0;
-            clip: rect(0, 0, 0, 0);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            white-space: nowrap;
-            width: 1px;
-        }
-
-        /* Skip link: hidden off screen until someone presses Tab */
-        .skip-link {
-            position: absolute;
-            left: -9999px;
-        }
-
-        .skip-link:focus {
-            left: 1rem;
-            top: 1rem;
-            padding: 0.5rem 1rem;
-            background: var(--background);
-        }
-
-        /* Header and site navigation */
-        body > header {
-            background: var(--box);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .site-name {
-            margin: 0 0 0.5rem;
-            font-weight: bold;
-        }
-
-        /* Site navigation sits below the page title */
-        header nav {
-            margin-top: 1rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .site-nav ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1.5rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .site-nav a {
-            display: inline-block;
-            padding: 0.5rem 0;
-        }
-
-        /* The link for the page you are on */
-        .site-nav a[aria-current="page"] {
-            color: var(--text);
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        /* Headings */
-        h1 {
-            margin: 0.5rem 0 0;
-            font-size: 2.5rem;
-            line-height: 1.2;
-        }
-
-        h2 {
-            margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 2px solid var(--border);
-            font-size: 1.75rem;
-            line-height: 1.3;
-        }
-
-        h3 {
-            margin-top: 2rem;
-            font-size: 1.35rem;
-            line-height: 1.3;
-        }
-
-        .tagline {
-            margin-top: 0.5rem;
-            color: var(--gray-text);
-            font-size: 1.25rem;
-        }
-
-        /* Table of contents */
-        .contents {
-            margin: 2rem 0;
-            padding: 0.5rem 1.5rem 1rem;
-            background: var(--box);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-        }
-
-        .contents h2 {
-            margin-top: 0.5rem;
-            padding-top: 0;
-            border-top: none;
-            font-size: 1.35rem;
-        }
-
-        .contents ol ol {
-            margin: 0.25rem 0 0.5rem;
-        }
-
-        /* Photos */
-        figure {
-            margin: 1.5rem 0;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.375rem;
-        }
-
-        figcaption {
-            margin-top: 0.5rem;
-            color: var(--gray-text);
-            font-size: 1rem;
-        }
-
-
-        /* Specification table */
-        table {
-            width: 100%;
-            margin: 1.5rem 0;
-            border-collapse: collapse;
-            font-size: 1rem;
-        }
-
-        caption {
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            text-align: left;
-        }
-
-        th,
-        td {
-            padding: 0.5rem;
-            border: 1px solid var(--border);
-            text-align: left;
-        }
-
-        thead th {
-            background: var(--box);
-        }
-
-        .back-to-top {
-            font-size: 1rem;
-        }
-
-        /* Image credits list */
-        .credits {
-            font-size: 1rem;
-        }
-
-        .credits li + li {
-            margin-top: 0.4rem;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            color: var(--gray-text);
-            font-size: 1rem;
-        }
-
-        /* Phones and small screens */
-        @media (max-width: 30rem) {
-            .site-nav ul {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/legibility.css">
 </head>
 
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header>
+    <header class="container">
         <p class="site-name">Xander</p>
         <h1 id="top">Subaru WRX</h1>
         <p class="tagline">The rally-bred, all-wheel-drive compact car from Japan</p>
-        <nav class="site-nav" aria-labelledby="site-nav-heading">
+        <nav aria-labelledby="site-nav-heading">
             <h2 id="site-nav-heading" class="sr-only">Site navigation</h2>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -264,7 +26,7 @@
         </nav>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" class="container">
         <figure>
             <img src="images/wrx/wrx-2022-sport-tech.webp" width="616" height="356" alt="Bright blue 2022 Subaru WRX sedan with black wheels, seen from the front left.">
             <figcaption>2022 Subaru WRX Sport-Tech in World Rally Blue Pearl.</figcaption>
@@ -406,7 +168,7 @@
             <section id="wrc-group-a">
                 <h3>Group A Impreza (1993–1996)</h3>
                 <figure>
-                    <img src="images/wrx/impreza-555-mcrae.webp" width="498" height="270" alt="Blue Impreza rally car with yellow stripes, gold wheels, sponsor decals, and the number 4, on display indoors." loading="lazy">
+                    <img src="images/wrx/impreza-555-mcrae.webp" width="498" height="270" alt="Blue Impreza rally car with yellow stripes, gold wheels, and the number 4, on display indoors." loading="lazy">
                     <figcaption>Colin McRae's 1995 Group A Impreza 555.</figcaption>
                 </figure>
                 <p>Subaru's partner Prodrive decided that a smaller, nimbler car would make a better rally car than the Legacy. The Group A Impreza was 160 mm shorter, had a 60 mm shorter wheelbase, and was more evenly balanced from front to back. It was also the first rally car with active differentials. On its debut at the 1993 1000 Lakes Rally in Finland, Ari Vatanen drove it to second place.</p>
@@ -416,7 +178,7 @@
             <section id="wrc-gc">
                 <h3>World Rally Car Impreza GC (1997–2001)</h3>
                 <figure>
-                    <img src="images/wrx/impreza-wrc97-goodwood.webp" width="500" height="338" alt="Blue two-door Impreza rally car with the number 6 racing past hay bales, the background blurred by its speed." loading="lazy">
+                    <img src="images/wrx/impreza-wrc97-goodwood.webp" width="500" height="338" alt="Blue two-door Impreza rally car, number 6, racing past hay bales with a motion-blurred background." loading="lazy">
                     <figcaption>The WRC97, the first Prodrive World Rally Car, at the Goodwood Festival of Speed.</figcaption>
                 </figure>
                 <p>In 1997, the World Rally Car rules replaced Group A and gave teams much more freedom. Subaru built a completely redesigned two-door car, the WRC97. It was 1,770 mm wide and made 300 hp and 470 N⋅m of torque.</p>
@@ -439,7 +201,7 @@
                 </ul>
                 <p>The WRC2007 gearbox alone took 85 hours to build and cost over £75,000. Its semi-automatic system could change gears in less than 0.1 seconds, and the engine and gearbox could be swapped out in 10 to 12 minutes.</p>
                 <figure>
-                    <img src="images/wrx/impreza-wrc-cyprus-2006.webp" width="658" height="878" alt="Blue and green Impreza rally car sliding down a gravel road between trees, throwing up a huge cloud of dust." loading="lazy">
+                    <img src="images/wrx/impreza-wrc-cyprus-2006.webp" width="658" height="878" alt="Blue and green Impreza rally car sliding down a gravel road, throwing up a huge cloud of dust." loading="lazy">
                     <figcaption>Petter Solberg on gravel at the 2006 Cyprus Rally.</figcaption>
                 </figure>
                 <figure>
@@ -451,7 +213,7 @@
             <section id="wrc-gr">
                 <h3>World Rally Car Impreza GR (2008)</h3>
                 <figure>
-                    <img src="images/wrx/impreza-wrc2008-japan.webp" width="498" height="336" alt="Blue Subaru hatchback rally car with SUBARU in large letters on the door, driving past autumn trees." loading="lazy">
+                    <img src="images/wrx/impreza-wrc2008-japan.webp" width="498" height="336" alt="Blue Subaru hatchback rally car with SUBARU in large letters on the door, passing autumn trees." loading="lazy">
                     <figcaption>Chris Atkinson's WRC2008 at the 2008 Rally Japan.</figcaption>
                 </figure>
                 <p>Subaru began testing the WRC2008, based on the new GR hatchback, in December 2007. It debuted at the Acropolis Rally in Greece in May 2008, where Petter Solberg finished second. Chris Atkinson's third place at Rally Finland was the car's last podium. Subaru withdrew from the World Rally Championship at the end of 2008 because of the global financial crisis.</p>
@@ -475,7 +237,7 @@
             <section id="powertrain">
                 <h3>Powertrain</h3>
                 <figure>
-                    <img src="images/wrx/wrx-sti-2015-engine.webp" width="306" height="250" alt="Blue WRX STI at an auto show with its hood open, showing the engine and the silver intercooler on top." loading="lazy">
+                    <img src="images/wrx/wrx-sti-2015-engine.webp" width="306" height="250" alt="Blue WRX STI at an auto show with its hood open, showing the engine and silver intercooler." loading="lazy">
                     <figcaption>The engine bay of a 2015 WRX STI at the Montreal International Auto Show.</figcaption>
                 </figure>
                 <p>This was the first WRX without an EJ-series engine. The regular WRX used a new 2.0-liter FA20F engine with direct injection and a twin-scroll turbocharger, mounted low at the front of the engine to lower the car's center of gravity. It reaches peak torque at just 2,000 rpm, about half the engine speed of the older 2.5-liter engine. A 6-speed manual was standard, and a CVT automatic with paddle shifters was optional.</p>
@@ -598,7 +360,7 @@
                 <p>In 2024, Subaru Motorsports USA and Vermont SportsCar revealed "Project Midnight," a WRX prototype built for pure speed on pavement. It has a carbon fiber body, weighs 2,469 pounds (1,120 kg), and uses a 2.0-liter flat-four engine making 670 hp (500 kW).</p>
                 <p>Driven by Scott Speed, it finished second in the Goodwood Festival of Speed hill climb shootout in both 2024 and 2025. In August 2026, it set a new record at the Mount Washington Hillclimb with a time of 5:11.89.</p>
                 <figure>
-                    <img src="images/wrx/wrx-project-midnight.webp" width="504" height="382" alt="Dark gray wide-body WRX race car with large aerodynamic wings and splitters, being examined by two people in a tent." loading="lazy">
+                    <img src="images/wrx/wrx-project-midnight.webp" width="504" height="382" alt="Dark gray wide-body WRX race car with large wings and splitters, examined by two people in a tent." loading="lazy">
                     <figcaption>Project Midnight in the paddock at the Goodwood Festival of Speed.</figcaption>
                 </figure>
             </section>
@@ -639,7 +401,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="container">
         <p>Text adapted from the Wikipedia article "<a href="https://en.wikipedia.org/wiki/Subaru_WRX">Subaru WRX</a>," available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 License</a>.</p>
         <p>Created by Xander for Universal Design.</p>
     </footer>

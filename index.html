@@ -5,176 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Xander's class website for Universal Design: a little bit about me, my interests, and what I'm learning.">
     <title>Home | Xander's Universal Design Site</title>
-    <style>
-        /* Colors */
-        :root {
-            --background: #ffffff;
-            --box: #f3f5f9;
-            --text: #1b1f27;
-            --gray-text: #4a5263;
-            --blue: #1d4ed8;
-            --border: #d5dae3;
-            --focus: #b45309;
-        }
-
-        /* Dark mode colors, used when the device is set to dark mode */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background: #12151c;
-                --box: #1c212b;
-                --text: #eef1f6;
-                --gray-text: #b4bccb;
-                --blue: #93b4ff;
-                --border: #343b49;
-                --focus: #fbbf24;
-            }
-        }
-
-        body {
-            margin: 0;
-            background: var(--background);
-            color: var(--text);
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-
-        /* Keeps the header, main, and footer content in a centered column */
-        header,
-        main,
-        footer {
-            padding: 1rem max(1rem, calc((100% - 44rem) / 2));
-        }
-
-        a {
-            color: var(--blue);
-        }
-
-        /* Clear outline when using the keyboard to move around */
-        a:focus {
-            outline: 3px solid var(--focus);
-            outline-offset: 3px;
-        }
-
-        /* Hide only visually, but have it available for screen readers */
-        .sr-only {
-            border: 0;
-            clip: rect(0, 0, 0, 0);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            white-space: nowrap;
-            width: 1px;
-        }
-
-        /* Skip link: hidden off screen until someone presses Tab */
-        .skip-link {
-            position: absolute;
-            left: -9999px;
-        }
-
-        .skip-link:focus {
-            left: 1rem;
-            top: 1rem;
-            padding: 0.5rem 1rem;
-            background: var(--background);
-        }
-
-        /* Header and navigation */
-        header {
-            background: var(--box);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .site-name {
-            margin: 0 0 0.5rem;
-            font-weight: bold;
-        }
-
-        /* Site navigation sits below the page title */
-        header nav {
-            margin-top: 1rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        nav ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1.5rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        nav a {
-            display: inline-block;
-            padding: 0.5rem 0;
-        }
-
-        /* The link for the page you are on */
-        nav a[aria-current="page"] {
-            color: var(--text);
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        /* Main content */
-        main {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        h1 {
-            margin: 0.5rem 0 0;
-            font-size: 2.5rem;
-            line-height: 1.2;
-        }
-
-        .tagline {
-            margin-top: 0.5rem;
-            color: var(--gray-text);
-            font-size: 1.25rem;
-        }
-
-        h2 {
-            margin-top: 2rem;
-            font-size: 1.5rem;
-        }
-
-        .facts {
-            padding: 1rem 1rem 1rem 2.5rem;
-            background: var(--box);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            color: var(--gray-text);
-        }
-
-        /* Phones and small screens: stack the menu links on top of each other */
-        @media (max-width: 30rem) {
-            nav ul {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/legibility.css">
 </head>
 
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header>
+    <header class="container">
         <p class="site-name">Xander</p>
         <h1>Xander's Universal Design Home Page</h1>
         <p class="tagline">Hi, I'm Xander, your friendly neighborhood classmate.</p>
@@ -189,7 +26,7 @@
         </nav>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" class="container">
         <section aria-labelledby="about-heading">
             <h2 id="about-heading">A little bit about me</h2>
             <p>I think of myself as a master amateur, or "master of none," so to speak. I love trying new things and doing a bunch of different things at once.</p>
@@ -207,7 +44,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="container">
         <p>Created by Xander for Universal Design.</p>
     </footer>
 </body>
