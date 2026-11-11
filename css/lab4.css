@@ -1,0 +1,354 @@
+/* Lab 4: Accessible CSS Layout
+   A page about Blaster, built like his boombox: buttons on top (nav),
+   a tape deck in the middle (main), and a speaker on each side (the two asides). */
+
+/* Two Google Fonts: Chakra Petch for headings, Roboto for paragraphs */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Roboto:wght@400;700&display=swap');
+
+/* ---------- Colors ----------
+   Blaster red, gray, black, and yellow. Every text color has a contrast
+   of at least 7.8 to 1 on its background. */
+:root {
+    --page: #2a2a30;
+    --red: #a3101c;
+    --black: #141418;
+    --speaker: #3a3a42;
+    --key: #dcdcdc;
+    --yellow: #ffd23f;
+    --cream: #f4ebd0;
+    --dark-red: #8a0d18;
+    --light-gray: #d0d0d6;
+    --white: #ffffff;
+}
+
+/* ---------- Base text: legible font, size, and line height ---------- */
+html {
+    background: var(--page);
+}
+
+body {
+    margin: 0;
+    color: var(--white);
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+h1,
+h2 {
+    font-family: "Chakra Petch", Arial, sans-serif;
+    line-height: 1.2;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+/* ---------- The boombox: CSS grid areas for the 2D layout ----------
+   Mobile first: one column. The order matches the HTML. */
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "cassettes"
+        "facts"
+        "footer";
+    gap: 1rem;
+    max-width: 75rem;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: var(--red);
+    border-radius: 1.5rem;
+}
+
+header { grid-area: header; }
+nav    { grid-area: nav; }
+main   { grid-area: main; }
+.cassettes { grid-area: cassettes; }
+.facts { grid-area: facts; }
+footer { grid-area: footer; }
+
+/* ---------- Header: the handle and the tuner display ---------- */
+header {
+    padding: 0.5rem 0.5rem 0;
+}
+
+/* The carrying handle across the top (decoration only) */
+header::before {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 0.75rem;
+    margin: 0 auto 1rem;
+    background: var(--black);
+    border-radius: 0.5rem;
+}
+
+.site-name {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* The page title sits in a dark "tuner display" */
+h1 {
+    display: inline-block;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    background: var(--black);
+    color: var(--yellow);
+    font-size: 2rem;
+    border-radius: 0.5rem;
+}
+
+.tagline {
+    margin: 0;
+}
+
+/* ---------- Nav: flexbox for the 1D row of boombox buttons ---------- */
+nav ul {
+    display: flex;
+    flex-direction: column;   /* Mobile: stacked, thumb-sized buttons */
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.5rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--key);
+    color: var(--black);
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 5px solid #8a8a8a;
+    border-radius: 0.5rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* The button for the page you are on is "pressed in" and yellow */
+nav a[aria-current="page"] {
+    background: var(--yellow);
+    border-bottom-width: 2px;
+}
+
+/* ---------- Main: the cassette deck ---------- */
+main {
+    padding: 1.25rem;
+    background: var(--cream);
+    color: #1a1a1a;
+    border: 0.75rem solid var(--black);
+    border-radius: 1rem;
+}
+
+/* The tape window with two spools (decoration only) */
+main::before {
+    content: "";
+    display: block;
+    height: 4rem;
+    margin-bottom: 1.25rem;
+    background:
+        radial-gradient(circle at 25% 50%, var(--black) 0 0.5rem, var(--key) 0.5rem 1.2rem, transparent 1.2rem),
+        radial-gradient(circle at 75% 50%, var(--black) 0 0.5rem, var(--key) 0.5rem 1.2rem, transparent 1.2rem),
+        var(--black);
+    border-radius: 2rem;
+}
+
+main h2 {
+    color: var(--dark-red);
+}
+
+main a {
+    color: var(--dark-red);
+}
+
+
+main section + section {
+    margin-top: 1.5rem;
+}
+
+
+/* ---------- Asides: the two speakers ---------- */
+aside {
+    padding: 1.25rem;
+    background: var(--speaker);
+    border-radius: 1rem;
+}
+
+/* A round speaker grille above the text (decoration only).
+   The text sits on a solid background so it stays readable. */
+aside::before {
+    content: "";
+    display: block;
+    width: 8rem;
+    aspect-ratio: 1;
+    margin: 0 auto 1rem;
+    background:
+        radial-gradient(circle, var(--black) 2px, transparent 2.5px) 0 0 / 0.6rem 0.6rem,
+        #55555e;
+    border: 0.5rem solid var(--black);
+    border-radius: 50%;
+}
+
+aside ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+aside li + li {
+    margin-top: 0.5rem;
+}
+
+aside a {
+    color: var(--yellow);
+}
+
+/* Quick facts: term in yellow, answer below it */
+dl {
+    margin: 0;
+}
+
+dt {
+    margin-top: 0.75rem;
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+dd {
+    margin: 0;
+}
+
+/* ---------- Footer: the tape deck buttons ---------- */
+footer {
+    padding: 1rem;
+    background: var(--black);
+    color: var(--light-gray);
+    font-size: 1rem;
+    border-radius: 0.75rem;
+}
+
+/* A row of small deck buttons (decoration only) */
+footer::before {
+    content: "";
+    display: block;
+    width: 12rem;
+    height: 1.25rem;
+    margin-bottom: 0.75rem;
+    background: repeating-linear-gradient(90deg, var(--key) 0 2rem, transparent 2rem 2.5rem);
+    border-radius: 0.25rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--yellow);
+}
+
+/* ---------- Accessibility helpers ---------- */
+
+/* Hide only visually, but have it available for screen readers */
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* Skip navigation: drops down from the top when someone presses Tab */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: bold;
+    border-radius: 0 0 0.5rem 0.5rem;
+    transform: translateY(-100%);
+    transition: transform 0.25s ease-out;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* Yellow and black focus ring that shows up on every background */
+a:focus {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px var(--black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skip-link {
+        transition: none;
+    }
+}
+
+/* ---------- Tablet: 40rem (640px) and wider ----------
+   The tape deck goes full width and the two speakers sit side by side below it.
+   The nav buttons turn into a horizontal row. */
+@media (min-width: 40rem) {
+    body {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "header header"
+            "nav    nav"
+            "main   main"
+            "facts  cassettes"
+            "footer footer";
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    nav li {
+        flex: 1 1 auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+}
+
+/* ---------- Desktop: 64rem (1024px) and wider ----------
+   A real boombox: speaker, tape deck, speaker. */
+@media (min-width: 64rem) {
+    body {
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas:
+            "header header header"
+            "nav    nav    nav"
+            "facts  main   cassettes"
+            "footer footer footer";
+    }
+
+    /* Keep the tape deck's lines to a readable length */
+    main {
+        max-width: 50rem;
+    }
+}

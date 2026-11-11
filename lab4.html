@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 4: an accessible CSS grid layout about Blaster, the music-loving Autobot from Transformers who turns into a boombox.">
+    <title>Lab 4: Blaster | Xander's Universal Design Site</title>
+    <link rel="stylesheet" href="css/lab4.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+        <p class="site-name">Xander</p>
+        <h1 id="top">Blaster</h1>
+        <p class="tagline">The music-loving Autobot who turns into a boombox</p>
+    </header>
+
+    <nav aria-labelledby="site-nav-heading">
+        <h2 id="site-nav-heading" class="sr-only">Site navigation</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="subaru-wrx.html">Lab 2: Wiki Page</a></li>
+            <li><a href="motorsports.html">Lab 3: Table and Form</a></li>
+            <li><a href="lab4.html" aria-current="page">Lab 4: CSS Layout</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section aria-labelledby="who-heading">
+            <h2 id="who-heading">Who is Blaster?</h2>
+            <p>Blaster is an Autobot from the original Generation 1 Transformers series. He transforms into a boombox, and he serves as the Autobots' communications officer, handling their radio signals and broadcasts.</p>
+            <p>He loves all Earth music, especially loud rock 'n' roll, and he is happy to share it with anyone, whether they want to hear it or not. That energy makes him a great friend in a fight, but his music also gets him into trouble with his commanders. Of the other Autobots, Jazz is one of the few who shares his taste in music.</p>
+        </section>
+    </main>
+
+    <aside class="cassettes" aria-labelledby="cassettes-heading">
+        <h2 id="cassettes-heading">Cassette partners</h2>
+        <p>Blaster's cassette team rides in his chest and jumps out to help in battle.</p>
+        <ul>
+            <li><strong>Steeljaw:</strong> transforms into a lion.</li>
+            <li><strong>Ramhorn:</strong> transforms into a rhinoceros.</li>
+            <li><strong>Rewind:</strong> a small robot who joined Blaster on missions with Perceptor.</li>
+            <li><strong>Eject:</strong> a small robot who saw Blaster as his mentor.</li>
+        </ul>
+    </aside>
+
+    <aside class="facts" aria-labelledby="facts-heading">
+        <h2 id="facts-heading">Quick facts</h2>
+        <dl>
+            <dt>Team</dt>
+            <dd>Autobots</dd>
+            <dt>Alternate mode</dt>
+            <dd>Boombox</dd>
+            <dt>Job</dt>
+            <dd>Communications officer</dd>
+            <dt>Rival</dt>
+            <dd>Soundwave</dd>
+        </dl>
+    </aside>
+
+    <footer>
+        <p><a href="#top">Back to top</a></p>
+    </footer>
+</body>
+</html>
