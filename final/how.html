@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to achieve universal design technically: semantic HTML, keyboard access, images, contrast, typography, forms, tables, ARIA, responsive layout, and testing.">
+    <title>How to build for everyone | Access Granted</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <p class="logo"><a href="index.html">Access <span>Granted</span></a></p>
+        <h1 class="page-title">How to build for everyone</h1>
+        <nav class="site-nav" aria-labelledby="nav-heading">
+            <h2 id="nav-heading" class="sr-only">Site navigation</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="what.html">What</a></li>
+                <li><a href="why.html">Why</a></li>
+                <li><a href="how.html" aria-current="page">How</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <p class="lead page-intro mint">Universal design on the web comes down to a set of habits. None of them are hard on their own, and together they make a site that works for everyone.</p>
+
+        <nav class="toc box" aria-labelledby="toc-heading">
+            <h2 id="toc-heading">On this page</h2>
+            <ol>
+                <li><a href="#semantic">Structure with semantic HTML</a></li>
+                <li><a href="#keyboard">Navigation and keyboard</a></li>
+                <li><a href="#images">Images and media</a></li>
+                <li><a href="#color">Color and contrast</a></li>
+                <li><a href="#type">Typography and legibility</a></li>
+                <li><a href="#forms">Accessible forms</a></li>
+                <li><a href="#tables">Accessible data tables</a></li>
+                <li><a href="#aria">ARIA and hidden content</a></li>
+                <li><a href="#responsive">Responsive, mobile first layout</a></li>
+                <li><a href="#testing">Testing your work</a></li>
+            </ol>
+        </nav>
+
+        <section id="semantic" class="topic" aria-labelledby="semantic-heading">
+            <h2 id="semantic-heading">Structure with semantic HTML</h2>
+            <p>Use the element that matches the meaning, and assistive technology can understand your page for free.</p>
+            <ul>
+                <li>Landmarks: header, nav, main, aside, and footer</li>
+                <li>One h1 and headings in order</li>
+                <li>Real lists, tables, and buttons</li>
+            </ul>
+        </section>
+
+        <section id="keyboard" class="topic" aria-labelledby="keyboard-heading">
+            <h2 id="keyboard-heading">Navigation and keyboard</h2>
+            <p>Everything you can do with a mouse should work with a keyboard.</p>
+            <ul>
+                <li>Skip navigation links</li>
+                <li>Logical tab order, visible focus, and no keyboard traps</li>
+                <li>Marking the current page with aria-current</li>
+            </ul>
+        </section>
+
+        <section id="images" class="topic" aria-labelledby="images-heading">
+            <h2 id="images-heading">Images and media</h2>
+            <p>Pictures and video need text alternatives.</p>
+            <ul>
+                <li>Writing good alt text, and alt="" for decorative images</li>
+                <li>Captions and transcripts</li>
+                <li>Hiding decorative icons with aria-hidden</li>
+            </ul>
+        </section>
+
+        <section id="color" class="topic" aria-labelledby="color-heading">
+            <h2 id="color-heading">Color and contrast</h2>
+            <p>Text has to stand out from its background, and color can't be the only way to show meaning.</p>
+            <ul>
+                <li>WCAG contrast ratios: 4.5 to 1 for text, 3 to 1 for large text</li>
+                <li>Color blind safe palettes</li>
+                <li>Never using color alone</li>
+            </ul>
+        </section>
+
+        <section id="type" class="topic" aria-labelledby="type-heading">
+            <h2 id="type-heading">Typography and legibility</h2>
+            <p>Readable type is accessible type.</p>
+            <ul>
+                <li>Readable fonts and at least 16px body text</li>
+                <li>Line height around 1.5</li>
+                <li>Line length around 45 to 100 characters</li>
+            </ul>
+        </section>
+
+        <section id="forms" class="topic" aria-labelledby="forms-heading">
+            <h2 id="forms-heading">Accessible forms</h2>
+            <p>Forms are where many sites lock people out.</p>
+            <ul>
+                <li>Labels tied to inputs</li>
+                <li>Grouping with fieldset and legend</li>
+                <li>Hints, required fields, and helpful error messages</li>
+            </ul>
+        </section>
+
+        <section id="tables" class="topic" aria-labelledby="tables-heading">
+            <h2 id="tables-heading">Accessible data tables</h2>
+            <p>Tables are for data, and screen readers need to know which header goes with each cell.</p>
+            <ul>
+                <li>Captions</li>
+                <li>Header cells with scope</li>
+                <li>No tables for layout</li>
+            </ul>
+        </section>
+
+        <section id="aria" class="topic" aria-labelledby="aria-heading">
+            <h2 id="aria-heading">ARIA and hidden content</h2>
+            <p>ARIA can fill gaps, but native HTML comes first.</p>
+            <ul>
+                <li>The first rule of ARIA</li>
+                <li>Hiding content visually with the .sr-only clip method vs. display: none</li>
+            </ul>
+        </section>
+
+        <section id="responsive" class="topic" aria-labelledby="responsive-heading">
+            <h2 id="responsive-heading">Responsive, mobile first layout</h2>
+            <p>Start with the smallest screen and build up.</p>
+            <ul>
+                <li>Mobile first CSS and media queries</li>
+                <li>CSS grid for layout and flexbox for navigation</li>
+                <li>Thumb-sized tap targets and zoom without sideways scrolling</li>
+                <li>Respecting reduced motion settings</li>
+            </ul>
+        </section>
+
+        <section id="testing" class="topic" aria-labelledby="testing-heading">
+            <h2 id="testing-heading">Testing your work</h2>
+            <p>Automated tools catch a lot, but you also need to try your site the way your users do.</p>
+            <ul>
+                <li>The Nu HTML validator, WAVE, Silktide, Lighthouse, and the HTML5 Outliner</li>
+                <li>A keyboard-only test and a screen reader test</li>
+                <li>A launch checklist</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Access Granted is a class project by Xander for Universal Design.</p>
+    </footer>
+</body>
+</html>

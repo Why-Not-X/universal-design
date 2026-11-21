@@ -1,0 +1,529 @@
+/* Access Granted: Universal Design final project
+   Written mobile first: the base styles are for phones, and
+   min-width media queries add the tablet and desktop layouts. */
+
+/* Two Google Fonts: Space Grotesk for headings,
+   Atkinson Hyperlegible (made for readers with low vision) for body text */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@500;700&display=swap');
+
+/* ---------- Colors ----------
+   Color blind safe palette. All text is dark ink, so every color pair
+   has a contrast of at least 7.8 to 1, and no meaning depends on color alone. */
+:root {
+    --ink: #121212;
+    --paper: #fff8e7;
+    --white: #ffffff;
+    --yellow: #ffd23f;
+    --sky: #a8c8ff;
+    --mint: #9ee6c4;
+    --coral: #ff9b7a;
+    --muted: #4a4a4a;
+    --link: #1f3fbf;
+
+    --border: 3px solid var(--ink);
+    --shadow: 6px 6px 0 var(--ink);
+    --radius: 0.75rem;
+}
+
+/* ---------- Base: legible type ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Atkinson Hyperlegible", Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Space Grotesk", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2.25rem, 9vw, 4.25rem);
+}
+
+h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+}
+
+h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.35rem;
+}
+
+p {
+    max-width: 65ch;
+}
+
+a {
+    color: var(--link);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+}
+
+/* ---------- Accessibility helpers ---------- */
+
+/* Hide only visually, but keep it for screen readers */
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* Skip navigation: drops down from the top when it gets keyboard focus */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background: var(--ink);
+    color: var(--yellow);
+    font-weight: 700;
+    border-radius: 0 0 var(--radius) var(--radius);
+    transform: translateY(-100%);
+    transition: transform 0.2s ease-out;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* A thick focus ring that shows up on every background color */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 7px var(--yellow);
+}
+
+/* ---------- Centered column without extra wrapper elements ----------
+   The side padding grows on wide screens so the content stays
+   in a 72rem column, while backgrounds still stretch edge to edge. */
+.site-header,
+main,
+.site-footer {
+    padding-left: max(1rem, calc((100% - 72rem) / 2));
+    padding-right: max(1rem, calc((100% - 72rem) / 2));
+}
+
+/* ---------- Header and navigation ---------- */
+.site-header {
+    background: var(--yellow);
+    border-bottom: var(--border);
+}
+
+/* Header layout (grid): logo, page title, then navigation on phones */
+.site-header {
+    display: grid;
+    grid-template-areas:
+        "logo"
+        "title"
+        "nav";
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1.25rem;
+}
+
+.logo       { grid-area: logo; }
+.page-title { grid-area: title; }
+.site-nav   { grid-area: nav; }
+
+.logo {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Space Grotesk", Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    text-decoration: underline;
+}
+
+.logo span {
+    padding: 0 0.35rem;
+    background: var(--ink);
+    color: var(--yellow);
+    border-radius: 0.35rem;
+}
+
+/* Page title on the What, Why, and How pages */
+.page-title {
+    margin: 0.5rem 0 0;
+}
+
+/* Mobile: a 2 by 2 grid of big, thumb-sized buttons */
+.site-nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.25rem;
+    padding: 0.5rem 1rem;
+    background: var(--white);
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 0 var(--ink);
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
+
+/* The page you are on is filled in with ink */
+.site-nav a[aria-current="page"] {
+    background: var(--ink);
+    color: var(--white);
+}
+
+/* ---------- Main content ---------- */
+main {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+
+main > section + section {
+    margin-top: 3.5rem;
+}
+
+.eyebrow {
+    margin: 0 0 0.5rem;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.lead {
+    font-size: 1.3rem;
+}
+
+/* Bold boxes used for cards, stats, and callouts */
+.box {
+    padding: 1.5rem;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.box > :last-child {
+    margin-bottom: 0;
+}
+
+/* Links on colored boxes use ink so they keep high contrast (still underlined) */
+.box a,
+.page-intro a {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.yellow { background: var(--yellow); }
+.sky    { background: var(--sky); }
+.mint   { background: var(--mint); }
+.coral  { background: var(--coral); }
+
+/* Chunky buttons */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.25rem;
+    background: var(--white);
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+    text-decoration: underline;
+}
+
+.button.primary {
+    background: var(--ink);
+    color: var(--white);
+    box-shadow: 4px 4px 0 var(--coral);
+}
+
+/* ---------- Home page: hero ---------- */
+.hero {
+    display: grid;
+    gap: 0 2.5rem;
+}
+
+.hero-title {
+    font-size: clamp(2.25rem, 9vw, 4.25rem);
+}
+
+.hero .stat {
+    margin-top: 2rem;
+}
+
+.stat {
+    margin: 0;
+}
+
+.stat .number {
+    display: block;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    font-size: clamp(3rem, 14vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat .source {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+}
+
+/* ---------- Card grids (one column on phones) ---------- */
+.cards {
+    display: grid;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cards .tag {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.1rem 0.6rem;
+    background: var(--ink);
+    color: var(--white);
+    font-family: "Space Grotesk", Arial, sans-serif;
+    font-weight: 700;
+    border-radius: 0.35rem;
+}
+
+/* Quick wins list with big numbers */
+.wins {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: win;
+}
+
+.wins li {
+    position: relative;
+    padding: 1rem 1rem 1rem 4rem;
+    background: var(--white);
+    border: var(--border);
+    border-radius: var(--radius);
+    counter-increment: win;
+}
+
+.wins li::before {
+    content: counter(win);
+    position: absolute;
+    top: 0.85rem;
+    left: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    background: var(--yellow);
+    font-family: "Space Grotesk", Arial, sans-serif;
+    font-weight: 700;
+    border: var(--border);
+    border-radius: 50%;
+}
+
+/* ---------- Inner pages (What, Why, How) ---------- */
+.page-intro {
+    max-width: none;
+    margin: 0;
+    padding: 1.5rem;
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* "On this page" list of anchor links */
+.toc {
+    margin: 2.5rem 0 3.5rem;
+}
+
+.toc h2 {
+    font-size: 1.5rem;
+}
+
+.toc ol {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+/* Each topic gets a thick rule on top */
+.topic {
+    padding-top: 1.5rem;
+    border-top: var(--border);
+}
+
+.topic ul {
+    padding-left: 1.5rem;
+}
+
+.topic li + li {
+    margin-top: 0.35rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.site-footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.site-footer p {
+    margin: 0 0 0.75rem;
+}
+
+.site-footer a {
+    color: var(--yellow);
+}
+
+/* ---------- Tablet: 48rem (768px) and wider ---------- */
+@media (min-width: 48rem) {
+    /* Logo on the left, navigation on the right, page title below */
+    .site-header {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "logo  nav"
+            "title title";
+        align-items: center;
+    }
+
+    .site-nav ul {
+        justify-content: flex-end;
+    }
+
+    /* Navigation becomes a single row */
+    .site-nav ul {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .site-nav a {
+        min-height: 2.75rem;
+    }
+
+    /* Text on the left, the big stat on the right */
+    .hero {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .hero > * {
+        grid-column: 1;
+    }
+
+    .hero .stat {
+        grid-column: 2;
+        grid-row: 1 / span 4;
+        align-self: center;
+        margin-top: 0;
+    }
+
+    .cards.two-up {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wins {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .toc ol {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2.5rem;
+    }
+}
+
+/* ---------- Desktop: 64rem (1024px) and wider ---------- */
+@media (min-width: 64rem) {
+    .site-header,
+    main,
+    .site-footer {
+        padding-left: max(2rem, calc((100% - 72rem) / 2));
+        padding-right: max(2rem, calc((100% - 72rem) / 2));
+    }
+
+    main {
+        padding-top: 4rem;
+        padding-bottom: 5rem;
+    }
+
+    .cards.three-up {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ---------- Less motion for people who ask for it ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .skip-link,
+    .button {
+        transition: none;
+    }
+
+    .button:hover {
+        transform: none;
+    }
+}
